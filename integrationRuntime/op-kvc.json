@@ -1,0 +1,6 @@
+{
+	"name": "op-kvc",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

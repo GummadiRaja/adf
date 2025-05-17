@@ -1,0 +1,12 @@
+{
+	"name": "SqlServerTable17",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Soumya_onprem_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}

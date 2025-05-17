@@ -1,0 +1,27 @@
+{
+	"name": "Binary6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gen2_ls_kvc",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FolderName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat('files-excel/',dataset().FolderName)",
+					"type": "Expression"
+				},
+				"fileSystem": "kvc"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "Binary10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gen2_ls_kvc",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Archive",
+				"fileSystem": "kvc"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

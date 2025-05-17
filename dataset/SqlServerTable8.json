@@ -1,0 +1,41 @@
+{
+	"name": "SqlServerTable8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_op_db1_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "start_lsn",
+				"type": "binary"
+			},
+			{
+				"name": "tran_begin_time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "tran_end_time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "tran_id",
+				"type": "varbinary"
+			},
+			{
+				"name": "tran_begin_lsn",
+				"type": "binary"
+			}
+		],
+		"typeProperties": {
+			"schema": "cdc",
+			"table": "lsn_time_mapping"
+		}
+	}
+}

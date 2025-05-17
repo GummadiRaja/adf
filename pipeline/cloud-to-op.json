@@ -1,0 +1,175 @@
+{
+	"name": "cloud-to-op",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Get Latest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT \n    SourceName,\n    SourceSchema,\n    SourcePath,\n    SourceType,\n    SinkType,\n    SinkSchema,\n    SinkName,\n    ISNULL(PreCopyScripts, '') AS PreCopyScripts,\n    ISNULL(PostCopyScripts, '') AS PostCopyScripts,\n    isactive,\n    ISNULL(lastModifiedDate, '') AS lastModifiedDate\nFROM data_Transfer_Details\nWHERE isactive = '1';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlServerTable6",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Switch1",
+							"type": "Switch",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"on": {
+									"value": "@item().SourceType",
+									"type": "Expression"
+								},
+								"cases": [
+									{
+										"value": "Excel",
+										"activities": [
+											{
+												"name": "Execute Pipeline1",
+												"type": "ExecutePipeline",
+												"dependsOn": [],
+												"policy": {
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"pipeline": {
+														"referenceName": "cild-pipeline",
+														"type": "PipelineReference"
+													},
+													"waitOnCompletion": true,
+													"parameters": {
+														"PreCopyScripts": {
+															"value": "@item().PreCopyScripts",
+															"type": "Expression"
+														},
+														"PostCopyScripts": {
+															"value": "@item().PostCopyScripts",
+															"type": "Expression"
+														},
+														"FileName": {
+															"value": "@item().SourceName",
+															"type": "Expression"
+														},
+														"SheetName": {
+															"value": "@item().SourceSchema",
+															"type": "Expression"
+														},
+														"TableSchema": {
+															"value": "@item().SinkSchema",
+															"type": "Expression"
+														},
+														"TableName": {
+															"value": "@item().SinkName",
+															"type": "Expression"
+														},
+														"FilePath": {
+															"value": "@item().SourcePath",
+															"type": "Expression"
+														}
+													}
+												}
+											}
+										]
+									},
+									{
+										"value": "Sql",
+										"activities": [
+											{
+												"name": "Wait1",
+												"type": "Wait",
+												"dependsOn": [],
+												"userProperties": [],
+												"typeProperties": {
+													"waitTimeInSeconds": 1
+												}
+											}
+										]
+									},
+									{
+										"value": "csv",
+										"activities": [
+											{
+												"name": "Wait2",
+												"type": "Wait",
+												"dependsOn": [],
+												"userProperties": [],
+												"typeProperties": {
+													"waitTimeInSeconds": 1
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Get Latest",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "latestModified",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "adls-to-op-mapping"
+		},
+		"annotations": []
+	}
+}

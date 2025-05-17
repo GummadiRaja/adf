@@ -1,0 +1,30 @@
+{
+	"name": "rowLevel_watermark_incrementalLoad",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_op_db1_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "EntityType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EntityID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Watermark",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "Incremental",
+			"table": "WatermarkTracker_rowLevel"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "SqlServerTable16",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_op_db1_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,9 @@
+{
+	"name": "kvc-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "de938098-c27f-4b95-94fc-e4644951bf82",
+		"tenantId": "e27c81c2-b4f9-484d-97c3-62bc2f29a438"
+	}
+}

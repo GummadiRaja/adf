@@ -1,0 +1,24 @@
+{
+	"name": "stg_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "cloud-to-op",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/kvc/blobs/files-excel",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/fd3029ee-a394-4ada-9fdd-ba411509ea88/resourceGroups/RG-RSS/providers/Microsoft.Storage/storageAccounts/mystggaccall",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

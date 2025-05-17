@@ -1,0 +1,19 @@
+{
+	"name": "SourceDataset_l66",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gen2_ls_kvc",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "files-excel",
+				"fileSystem": "kvc"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

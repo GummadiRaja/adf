@@ -1,0 +1,12 @@
+{
+	"name": "sql_op_ds_db1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_op_db2_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}

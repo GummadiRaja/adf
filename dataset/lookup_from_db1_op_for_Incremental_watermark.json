@@ -1,0 +1,12 @@
+{
+	"name": "lookup_from_db1_op_for_Incremental_watermark",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_op_db1_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}

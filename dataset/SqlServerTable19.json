@@ -1,0 +1,16 @@
+{
+	"name": "SqlServerTable19",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Soumya_onprem_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "EMP1"
+		}
+	}
+}

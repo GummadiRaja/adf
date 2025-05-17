@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedText5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "gen2_ls_kvc",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "watermark",
+				"fileSystem": "kvc"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EntityType",
+				"type": "String"
+			},
+			{
+				"name": "EntityID",
+				"type": "String"
+			},
+			{
+				"name": "Watermark",
+				"type": "String"
+			}
+		]
+	}
+}

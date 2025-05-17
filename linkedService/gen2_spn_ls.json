@@ -1,0 +1,20 @@
+{
+	"name": "gen2_spn_ls",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"spn": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://mystggaccall.dfs.core.windows.net/",
+			"tenant": "73b470cc-8fcd-41b0-9e06-1670313e6b86",
+			"servicePrincipalId": "@{linkedService().spn}",
+			"servicePrincipalCredentialType": "ServicePrincipalKey",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEVEMUM2OEU5LTQyREEtNDlCNy05Qjc1LUQ2QUVENUIxOTdERF82OGQ2MDAxNy0xZmM2LTRhYjktOTFkZi1mY2ZjNjNmMTZkODYiDQp9"
+		}
+	}
+}

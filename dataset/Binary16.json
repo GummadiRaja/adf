@@ -1,0 +1,26 @@
+{
+	"name": "Binary16",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage6",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"itemname": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().itemname",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
+			}
+		}
+	}
+}

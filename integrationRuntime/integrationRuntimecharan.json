@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimecharan",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

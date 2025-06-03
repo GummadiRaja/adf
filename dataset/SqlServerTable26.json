@@ -1,0 +1,40 @@
+{
+	"name": "SqlServerTable26",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "onpremisesqlLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "mysid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sname",
+				"type": "varchar"
+			},
+			{
+				"name": "fees",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gender",
+				"type": "bit"
+			},
+			{
+				"name": "email",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "student"
+		}
+	}
+}
